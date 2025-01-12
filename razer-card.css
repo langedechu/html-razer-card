@@ -1,0 +1,137 @@
+/* basic shit */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  font-family: "Courier New", Courier, monospace;
+  color: aliceblue;
+}
+
+html {
+  display: flex;
+
+  width: 100%;
+  height: 100%;
+
+  justify-content: center;
+  align-items: center;
+
+  /* 
+  ################################################################
+  #### La flemme ? Moi aussi.                                 ####
+  #### Allez sur https://cssgradient.io/ ne vous embêtez pas. ####
+  ################################################################
+  #### Feeling lazy? Me too.                                  ####
+  #### Go to https://cssgradient.io/ don't worry about that.  ####
+  ################################################################
+  */
+
+  /* ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ */
+
+  background: rgb(255, 0, 0);
+  background: linear-gradient(
+    45deg,
+    rgba(255, 0, 0, 1) 0%,
+    rgba(140, 146, 3, 1) 13%,
+    rgba(61, 161, 6, 1) 25%,
+    rgba(30, 160, 108, 1) 37%,
+    rgba(5, 160, 179, 1) 50%,
+    rgba(64, 52, 186, 1) 62%,
+    rgba(127, 4, 193, 1) 75%,
+    rgba(188, 2, 149, 1) 87%,
+    rgba(255, 0, 0, 1) 100%
+  );
+
+  /* ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
+
+  animation: rainbow 5s linear infinite;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  width: 99%;
+  height: 99%;
+
+  justify-content: center;
+  align-items: center;
+
+  /* 
+  ##########################################################################
+  #### Retirer cet attribut va rendre très FIER votre écran !           ####
+  ##########################################################################
+  #### Getting rid of this attribute will make your monitor very PROUD! ####
+  ##########################################################################
+  */
+
+  /* ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ */
+
+  background-color: black;
+
+  /* ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
+
+  border-radius: 10px;
+}
+
+/* Gestion de la carte, de ses effets 3D et colorimétriques */
+
+.card-image {
+  border-radius: inherit;
+}
+
+.card-wrapper {
+  transform-style: preserve-3d;
+
+  /*
+  ##########################################################################################
+  #### Après vérif, plus la valeur de la perspective est faible,                        ####
+  #### plus vous aurez l'impression d'être proche de l'objet lors des modifications 3D. ####
+  ##########################################################################################
+  #### After a quick check, the lesser the perspective value is,                        ####
+  #### the closer from the object you'll feel when doing 3D works.                      ####
+  ##########################################################################################
+  */
+
+  /* ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ */
+
+  transform: perspective(800px) rotateY(20deg) rotateX(20deg);
+
+  /* ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
+
+  border-radius: 20px;
+  position: relative;
+}
+
+.card-wrapper::before,
+.card-wrapper::after {
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+}
+
+.card-wrapper::after {
+  inset: -1rem;
+  background: linear-gradient(150deg, blue, red);
+  filter: hue-rotate(-20deg) blur(10px) opacity(0.4);
+  transform: translateZ(-50px);
+}
+
+/* Filtre colorimétrique (🌈) */
+
+@keyframes rainbow {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
